@@ -10,7 +10,7 @@ def solution(numbers, target):
         if index == len(numbers):
             if target == total:
                 answer += 1
-            return
+        return answer
         
         # +, -
         dfs(index+1,total+numbers[index])
