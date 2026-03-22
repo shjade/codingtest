@@ -1,0 +1,13 @@
+WITH RECURSIVE timetable as(
+    SELECT 0 AS n
+    UNION ALL
+    SELECT n+1
+    FROM timetable
+    WHERE n<23
+)
+
+
+SELECT T.n AS HOUR, COUNT(HOUR(A.DATETIME)) AS COUNT
+FROM timetable T
+LEFT JOIN ANIMAL_OUTS A ON T.n = HOUR(A.DATETIME) 
+GROUP BY T.n
